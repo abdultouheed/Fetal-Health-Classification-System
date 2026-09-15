@@ -1,249 +1,247 @@
 # 🩺 Fetal Health Classification System
 
-An AI-driven healthcare system designed to assist in the **early identification of potential fetal abnormalities** using **Cardiotocography (CTG) data and fetal ultrasound images**.
+An AI-based healthcare project for fetal health assessment using **Cardiotocography (CTG) data** and **fetal ultrasound images**. The project explores Machine Learning and Deep Learning techniques to classify fetal health conditions using different types of medical data.
 
-The system combines traditional Machine Learning for CTG-based fetal health classification with Deep Learning-based image classification for fetal brain and kidney ultrasound images.
+The project consists of three independent Jupyter notebooks covering **CTG-based classification, fetal brain ultrasound classification, and fetal kidney ultrasound classification**.
 
 ---
 
 ## 📌 Project Overview
 
-Fetal health monitoring is important for identifying potential complications during pregnancy.
+Fetal health monitoring plays an important role in identifying potential complications during pregnancy.
 
-This project develops a multi-modal AI-based classification system that analyzes:
+This project investigates different Artificial Intelligence approaches for fetal health classification using:
 
-- 📊 **CTG data** for fetal health assessment
-- 🧠 **Fetal brain ultrasound images** for abnormality classification
-- 🫘 **Fetal kidney ultrasound images** for abnormality classification
+* 📊 **Cardiotocography (CTG) data**
+* 🧠 **Fetal brain ultrasound images**
+* 🫘 **Fetal kidney ultrasound images**
 
-The outputs from these models can be used together to provide an overall **Normal / Abnormal fetal health assessment**.
-
----
-
-## ✨ Features
-
-- 📊 CTG-based fetal health classification
-- 🧠 Fetal brain ultrasound image classification
-- 🫘 Fetal kidney ultrasound image classification
-- 🤖 Comparison of multiple Machine Learning algorithms
-- 🧠 Deep Learning-based image classification
-- 🔄 Multi-modal fetal health assessment
-- ⚡ Automated prediction of Normal / Abnormal cases
-- 📈 Evaluation using classification metrics and confusion matrices
+Machine Learning algorithms are applied to CTG tabular data, while Deep Learning techniques are used to classify fetal ultrasound images.
 
 ---
 
-## 🏗️ System Architecture
+## ✨ Project Components
+
+### 1. 📊 CTG Classification
+
+The `CTG.ipynb` notebook focuses on classifying fetal health using Cardiotocography data.
+
+The notebook includes:
+
+* Loading and exploring the CTG dataset
+* Data preprocessing
+* Feature analysis
+* Feature selection
+* Training Machine Learning models
+* Model comparison
+* Performance evaluation
+* Confusion matrix and classification metrics
+
+The Machine Learning models explored include:
+
+* Logistic Regression
+* Decision Tree
+* Random Forest
+
+The original CTG classification consists of three fetal health categories:
 
 ```text
-                    FETAL HEALTH CLASSIFICATION SYSTEM
-                                │
-             ┌──────────────────┴──────────────────┐
-             │                                     │
-             ▼                                     ▼
-      CTG Tabular Data                       Ultrasound Images
-             │                                     │
-             ▼                           ┌─────────┴─────────┐
-       Preprocessing                     │                   │
-             │                           ▼                   ▼
-             ▼                    Brain Ultrasound    Kidney Ultrasound
-    Machine Learning                    │                   │
-             │                           ▼                   ▼
-     ┌───────┼────────┐            CNN Model           CNN Model
-     │       │        │                │                   │
-     ▼       ▼        ▼                ▼                   ▼
-    LR      DT        RF           Brain Result       Kidney Result
-     │       │        │                │                   │
-     └───────┴────────┘                └─────────┬─────────┘
-             │                                   │
-             ▼                                   ▼
-       CTG Prediction                    Image Predictions
-             │                                   │
-             └────────────────┬──────────────────┘
-                              ▼
-                    Final Health Assessment
-                              │
-                              ▼
-                    Normal / Abnormal
-
-.
-
-📊 CTG Classification
-
-The CTG dataset contains physiological measurements used to assess fetal condition.
-
-The CTG pipeline includes:
-
-CTG Dataset
-     ↓
-Data Preprocessing
-     ↓
-Feature Selection
-     ↓
-Train / Test Split
-     ↓
-Model Training
-     ↓
-Classification
-     ↓
-Fetal Health Prediction
-
-The CTG model initially performs multi-class classification:
-
 1 → Normal
 2 → Suspect
 3 → Pathological
+```
 
-These predictions can subsequently be interpreted as an overall:
+---
 
+### 2. 🧠 Fetal Brain Classification
+
+The `Fetal Brain.ipynb` notebook focuses on classification of fetal brain ultrasound images.
+
+A Deep Learning-based image classification approach is used to distinguish between:
+
+```text
 Normal
-   or
+   ↓
 Abnormal
+```
 
-🧠 Fetal Brain Classification
+The notebook covers the image-based classification workflow, including image preprocessing, model training, validation, and prediction.
 
-A Deep Learning-based image classification model is used to analyze fetal brain ultrasound images.
+---
 
-Brain Ultrasound Image
-          ↓
-Image Preprocessing
-          ↓
-CNN Model
-          ↓
-Feature Extraction
-          ↓
-Classification
-          ↓
-Normal / Abnormal
+### 3. 🫘 Fetal Kidney Classification
 
-The model learns visual patterns from fetal brain ultrasound images to distinguish between normal and abnormal cases.
+The `Fetal_kidney.ipynb` notebook focuses on fetal kidney ultrasound image classification.
 
-🫘 Fetal Kidney Classification
+The model learns visual patterns from fetal kidney ultrasound images to classify them into:
 
-A separate Deep Learning model is used for fetal kidney ultrasound image classification.
+```text
+Normal
+   ↓
+Abnormal
+```
 
-Kidney Ultrasound Image
-          ↓
-Image Preprocessing
-          ↓
-CNN Model
-          ↓
-Feature Extraction
-          ↓
-Classification
-          ↓
-Normal / Abnormal
+The notebook contains the image preprocessing, Deep Learning model training, validation, and classification workflow.
 
-This provides an additional source of information for fetal health assessment.
+---
 
-🔄 Multi-Modal Prediction
+## 🏗️ Overall Project Workflow
 
-The project combines information from different medical data sources.
+```text
+                 Fetal Health Classification System
+                              │
+             ┌────────────────┼────────────────┐
+             │                │                │
+             ▼                ▼                ▼
+         CTG Data       Brain Ultrasound   Kidney Ultrasound
+             │                │                │
+             ▼                ▼                ▼
+       Preprocessing     Image Processing   Image Processing
+             │                │                │
+             ▼                ▼                ▼
+     Machine Learning    Deep Learning     Deep Learning
+             │                │                │
+             ▼                ▼                ▼
+       CTG Prediction    Brain Prediction   Kidney Prediction
+             │                │                │
+             └────────────────┼────────────────┘
+                              ▼
+                    Fetal Health Assessment
+```
 
-              ┌───────────────┐
-              │   CTG Model   │
-              └───────┬───────┘
-                      │
-                      ▼
-                 CTG Result
-                      │
-                      │
-┌─────────────────────┼─────────────────────┐
-│                     │                     │
-▼                     ▼                     ▼
-Brain Model       Kidney Model         CTG Model
-│                     │                     │
-▼                     ▼                     ▼
-Brain Result      Kidney Result        CTG Result
-│                     │                     │
-└─────────────────────┼─────────────────────┘
-                      ▼
-              Combined Assessment
-                      │
-                      ▼
-              Normal / Abnormal
+---
 
-The multi-modal approach provides multiple perspectives for fetal health assessment instead of relying on a single data source.
+## 📂 Repository Structure
 
-🛠️ Technologies Used
-Python
-Pandas
-NumPy
-Scikit-learn
-TensorFlow / Keras
-Deep Learning
-Convolutional Neural Networks (CNN)
-Matplotlib
-Seaborn
+The current repository contains three Jupyter notebooks:
 
-📂 Project Structure
-Fetal-Health-Classification/
+```text
+Fetal-Health-Classification-System/
 │
-├── CTG/
-│   ├── dataset/
-│   │   └── fetal_health.csv
-│   │
-│   ├── preprocessing.py
-│   ├── train.py
-│   ├── predict.py
-│   └── model/
-│       ├── random_forest.pkl
-│       └── scaler.pkl
-│
-├── Fetal-Brain/
-│   ├── dataset/
-│   │   ├── normal/
-│   │   └── abnormal/
-│   │
-│   ├── train.py
-│   └── predict.py
-│
-├── Fetal-Kidney/
-│   ├── dataset/
-│   │   ├── normal/
-│   │   └── abnormal/
-│   │
-│   ├── train.py
-│   └── predict.py
-│
-├── requirements.txt
+├── CTG.ipynb
+├── Fetal Brain.ipynb
+├── Fetal_kidney.ipynb
 └── README.md
+```
 
-The actual structure may vary depending on the final implementation.
+### Notebook Description
 
-⚙️ Installation
-1. Clone the Repository
-git clone https://github.com/your-username/fetal-health-classification.git
-2. Navigate to the Project
-cd fetal-health-classification
-3. Create a Virtual Environment
-python -m venv venv
+| File                 | Description                                                      |
+| -------------------- | ---------------------------------------------------------------- |
+| `CTG.ipynb`          | Fetal health classification using CTG data and Machine Learning  |
+| `Fetal Brain.ipynb`  | Fetal brain ultrasound image classification using Deep Learning  |
+| `Fetal_kidney.ipynb` | Fetal kidney ultrasound image classification using Deep Learning |
 
-Activate it on Windows:
+---
 
-venv\Scripts\activate
+## 🛠️ Technologies Used
 
-Linux/macOS:
+* **Python**
+* **Pandas**
+* **NumPy**
+* **Scikit-learn**
+* **TensorFlow / Keras**
+* **Matplotlib**
+* **Seaborn**
+* **Machine Learning**
+* **Deep Learning**
+* **Computer Vision**
 
-source venv/bin/activate
+---
 
-4. Install Dependencies
-pip install -r requirements.txt
-▶️ Running the Project
-CTG Prediction
+## 📊 Machine Learning
 
-Run the CTG prediction script:
+The CTG notebook explores and compares multiple Machine Learning algorithms:
 
-python CTG/predict.py
+### Logistic Regression
 
-Provide the required CTG features to obtain the predicted fetal health condition.
+A linear classification algorithm used as a baseline model for fetal health classification.
 
-Brain Image Prediction
-python Fetal-Brain/predict.py
+### Decision Tree
 
-Provide a fetal brain ultrasound image to obtain the prediction.
+A tree-based model that makes predictions through a sequence of feature-based decisions.
 
-Kidney Image Prediction
-python Fetal-Kidney/predict.py
+### Random Forest
 
-Provide a fetal kidney ultrasound image to obtain the prediction.
+An ensemble Machine Learning algorithm that combines multiple decision trees to improve classification performance.
+
+The models are evaluated using metrics such as:
+
+* Accuracy
+* Precision
+* Recall
+* F1-Score
+* Confusion Matrix
+
+---
+
+## 🧠 Deep Learning
+
+The fetal brain and kidney notebooks use Deep Learning techniques for medical image classification.
+
+The general workflow is:
+
+```text
+Ultrasound Dataset
+       ↓
+Image Preprocessing
+       ↓
+Training / Validation Split
+       ↓
+CNN / Deep Learning Model
+       ↓
+Model Training
+       ↓
+Validation
+       ↓
+Normal / Abnormal Prediction
+```
+
+---
+
+## 🎯 Key Features
+
+* Classification of fetal health using CTG data
+* Comparison of multiple Machine Learning algorithms
+* Fetal brain ultrasound image classification
+* Fetal kidney ultrasound image classification
+* Application of Deep Learning to medical images
+* Model performance evaluation
+* Multi-modal approach using both tabular and image-based medical data
+
+---
+
+## 🚀 Future Improvements
+
+The project can be further extended by:
+
+* Combining CTG, brain, and kidney predictions into a single unified model
+* Developing a web-based interface for predictions
+* Deploying the trained models using FastAPI or Flask
+* Adding explainable AI techniques such as Grad-CAM
+* Using advanced CNN architectures such as ResNet or EfficientNet
+* Increasing dataset size and diversity
+* Adding automated AI-generated reports
+* Developing a real-time medical image prediction system
+
+---
+
+## ⚠️ Disclaimer
+
+This project is intended for **educational and research purposes only**.
+
+The predictions produced by these models should not be considered a medical diagnosis or a replacement for evaluation by qualified healthcare professionals.
+
+---
+
+## 👨‍💻 Author
+
+**Abdul Touheed**
+
+Computer Science Engineer | Machine Learning Enthusiast | Python Developer
+
+---
+
+## 📄 License
+
+This project is intended for educational and research purposes.
